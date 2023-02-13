@@ -8,13 +8,12 @@ const ConvertAmount = (props) => {
 
         <TextInput
           style={styles.amountInput}
-          defaultValue={props.value}
+          value={props.value}
           placeholder={props.title}
           keyboardType="number-pad"
           onChangeText={(newText) => {
             props.setAmount(newText);
           }}
-          editable={props.disabled}
         />
       </View>
     </View>

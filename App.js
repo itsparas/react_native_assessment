@@ -2,20 +2,27 @@ import CurrencySelector from "./components/CurrencySelector";
 import ConvertButton from "./components/ConvertButton";
 import ConvertAmount from "./components/ConvertAmount";
 
+import currencyRates from "./utils/currencyRates";
+
 import Icon from "react-native-vector-icons/FontAwesome";
 
 import { StyleSheet, Text, View, StatusBar, ScrollView } from "react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { countryList } from "./utils/data";
 
 export default function App() {
   const [currencyList, setCurrencyList] = useState(countryList);
+  const [currencyRate, setCurrencyRate] = useState([]);
 
   const [fromCurrency, setFromCurrency] = useState("INR");
   const [toCurrency, setToCurrency] = useState("USD");
 
   const [amount, setAmount] = useState("");
   const [result, setResult] = useState("");
+
+  useEffect(() => {
+    currencyRates(setCurrencyRate);
+  }, []);
 
   return (
     <View style={{ flex: 1, backgroundColor: "#F0EEED" }}>
@@ -60,6 +67,7 @@ export default function App() {
             to={toCurrency}
             amount={amount}
             result={result}
+            currencyRate={currencyRate}
           />
           <View style={styles.resultcontainer}>
             <View style={styles.innercontainer}>

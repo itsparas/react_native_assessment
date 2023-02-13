@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
 
 const CurrencySelector = (props) => {
@@ -29,7 +28,6 @@ const CurrencySelector = (props) => {
             onChange={(item) => {
               props.setCurrency(item.value);
             }}
-            autoScroll={false}
           />
         </View>
       </View>

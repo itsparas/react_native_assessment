@@ -1,24 +1,26 @@
 import axios from "axios";
 
-const getCurrencyList = (setCurrencyList) => {
+const currencyRates = (setCurrencyRate) => {
   let data = [];
   axios
-    .get("https://api.apilayer.com/fixer/symbols", {
+    .get("https://api.apilayer.com/fixer/latest?symbols=&base=usd", {
       headers: {
         apikey: "DUoWEXbNDQEvnUzsyfFMG7ElgH7WLnhL",
       },
     })
     .then((result) => {
       const list = { ...result.data.rates };
+
       for (let key in list) {
         data.push({
-          label: `${list[key]} ( ${key} )`,
-          value: key,
+          label: key,
+          value: list[key],
         });
       }
-      setCurrencyList(data);
+
+      setCurrencyRate(data);
     })
     .catch((error) => console.log("error", error));
 };
 
-export default getCurrencyList;
+export default currencyRates;

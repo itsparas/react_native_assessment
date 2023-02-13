@@ -13,11 +13,12 @@ const ConvertButton = (props) => {
               to: props.to,
               from: props.from,
               amount: props.amount,
+              currencyRate: props.currencyRate,
             });
           }}
         >
           <Text style={{ textAlign: "center", color: "#fff", fontSize: 18 }}>
-            Convert
+            {props.currencyRate.length ? "Convert" : "Loading Currency Rates"}
           </Text>
         </TouchableOpacity>
       </View>
